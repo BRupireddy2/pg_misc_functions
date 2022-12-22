@@ -1,8 +1,8 @@
 name: pg_misc_functions CI
 on:
   schedule:
-    # run daily 20:00 on main branch
-    - cron: '5 * * * *'
+    # Runs at 00:00 UTC on every Sun.
+    - cron: '0 0 * * Sun'
   push:
   pull_request:
 jobs:
@@ -10,7 +10,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        version: [master, REL_15_STABLE, REL_14_STABLE]
+        version: [master, REL_15_STABLE]
     runs-on: ${{ matrix.os }}
 
     steps:
